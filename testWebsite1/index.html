@@ -11,6 +11,12 @@
         height: 100vh;
         overflow-x: hidden;
         overflow-y: auto;
+        perspective-origin-x: 100%;
+      }
+      .parallaxGroup{
+        position: relative;
+        height: 100vh;
+        transform-style: preserve-3d;
       }
       .parallaxLayer{
         position: absolute;
@@ -18,18 +24,31 @@
         right: 0;
         bottom: 0;
         left: 0;
+        transform-origin-x: 100%;
       }
       .parallaxLayer-base{
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
       }
       .parallaxLayer-back{
-        -webkit-transform: translateZ(0) scale(2);
-        transform: translateZ(-1) scale(2);
+        -webkit-transform: translateZ(-1) scale(1);
+        transform: translateZ(-1) scale(1);
+      }
+      .parallaxLayer-deep{
+        -webkit-transform: translateZ(-2) scale(3);
+        transform: translateZ(-2) scale(3);
+      }
+      .parallaxLayer-superdeep{
+        -webkit-transform: translateZ(-10) scale(1);
+        transform: translateZ(-10) scale(1);
+        color: #FF0000;
       }
 
       # css to help show the effects of the parallax
-      # forcing scrollbars by adding padding
+      *{
+        margin: 0;
+        padding: 0;
+      }
       .parallaxLayer{
         padding: 100vh 0;
       }
@@ -37,11 +56,27 @@
   </head>
   <body>
     <div class="parallax">
-      <div class="parallaxLayer parallaxLayer-base">
-        <h1>This is the base layer in the parallax scrolling</h1>
+      <div class="parallaxGroup">
+        <div class="parallaxLayer parallaxLayer-base">
+          <p>Base layer 1</p>
+        </div>
+        <div class="parallaxLayer parallaxLayer-back">
+          <p>Back layer 1</p>
+        </div>
       </div>
-      <div class="parallaxLayer parallaxLayer-back">
-        <h2>This layer only gets a second level header as it isn't as important</h2>
+      <div class="parallaxLayer parallaxLayer-superdeep">
+        <p>lol</p>
+      </div>
+      <div class="parallaxGroup">
+        <div class="parallaxLayer parallaxLayer-base">
+          <p>Base Layer 2</p>
+        </div>
+        <div class="parallaxLayer parallaxLayer-back">
+          <p>Back layer 2</p>
+        </div>
+        <div class="parallaxLayer parallaxLayer-deep">
+          <p>Hello :)</p>
+        </div>
       </div>
     </div>
   </body>
